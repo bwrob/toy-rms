@@ -24,6 +24,9 @@
         "editor.defaultFormatter": "tamasfe.even-better-toml"
     },
     "basedpyright.disableLanguageServices": true,
+    "cSpell.words": [
+        "levelname"
+    ],
     "debug.toolBarLocation": "docked",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorWidth": 3,
@@ -103,8 +106,5 @@
     "workbench.sideBar.location": "right",
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "always",
-    "zenMode.fullScreen": false,
-    "cSpell.words": [
-        "levelname"
-    ]
+    "zenMode.fullScreen": false
 }

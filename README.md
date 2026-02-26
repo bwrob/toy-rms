@@ -1,3 +1,5 @@
+![ToyRMS Banner](assets/banner.svg)
+
 # Toy RMS
 
 A toy model for risk management system (RMS) using Python.
