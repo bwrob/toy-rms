@@ -1,6 +1,8 @@
-![ToyRMS Banner](assets/banner.svg)
+#
 
-# Toy RMS
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bwrob/toy-rms/refs/heads/main/assets/banner.svg" alt="ToyRMS" style="width:95%;"/>
+</p>
 
 A toy, end-to-end Financial Risk Management System (RMS) built in Python — covering the full lifecycle from automated vendor data ingestion to interactive dashboards for traders and risk managers.
 
