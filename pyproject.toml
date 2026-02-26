@@ -1,0 +1,26 @@
+[project]
+    dependencies = [
+        "dagster>=1.10.21",
+        "pandas[parquet]>=2.3.0",
+        "pandera>=0.29.0",
+        "polars>=1.31.0",
+        "pydantic>=2.11.7",
+        "pymongo>=4.13.2",
+        "quantlib>=1.38",
+        "scipy>=1.15.3",
+        "sqlmodel>=0.0.24",
+    ]
+    description = "Add your description here"
+    name = "toy-rms"
+    readme = "README.md"
+    requires-python = ">=3.13"
+    version = "0.1.0"
+
+[dependency-groups]
+    dev = [
+        "poethepoet>=0.42.0",
+        "pytest>=9.0.2",
+        "ty>=0.0.19",
+        "typist>=0.0.1",
+    ]
+    docs = ["zensical>=0.0.24"]
