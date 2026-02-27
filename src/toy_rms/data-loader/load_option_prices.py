@@ -1,7 +1,20 @@
+"""Load option prices for a given ticker symbol."""
+
 from dataclasses import dataclass, field
+from typing import NamedTuple, cast
 
 import pandas as pd
 import yfinance as yf
+
+from toy_rms.utils.naming import to_snake_case
+
+
+class Options(NamedTuple):
+    """Named tuple to hold options data from yfinance."""
+
+    calls: pd.DataFrame
+    puts: pd.DataFrame
+    underlying: pd.DataFrame
 
 
 @dataclass
@@ -27,17 +40,18 @@ global_ticker_storage = TickerStorage()
 
 
 def prices_for_ticker(ticker: str) -> pd.DataFrame:
+    """DataFrame of option prices for the given ticker symbol."""
     stock = global_ticker_storage.get_ticker(ticker)
     options = stock.options
     all_prices = []
-    for exp in options:
-        opt = stock.option_chain(exp)
-        calls = opt.calls
-        puts = opt.puts
+    for expiry in options:
+        options = cast("Options", stock.option_chain(expiry))
+        calls = options.calls
+        puts = options.puts
         calls["optionType"] = "call"
         puts["optionType"] = "put"
         all_prices.extend((calls, puts))
-    return pd.concat(all_prices)
+    return pd.concat(all_prices).rename(columns=to_snake_case).reset_index(drop=True)
 
 
 if __name__ == "__main__":

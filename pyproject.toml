@@ -1,29 +1,18 @@
 [project]
-    dependencies = [
-        "dagster>=1.10.21",
-        "pandas[parquet, performance]>=3.0",
-        "pandera>=0.29.0",
-        "polars>=1.31.0",
-        "pydantic>=2.11.7",
-        "pymongo>=4.13.2",
-        "quantlib>=1.38",
-        "scipy>=1.15.3",
-        "sqlmodel>=0.0.24",
-        "yfinance>=1.2.0",
-    ]
-    description = "Add your description here"
-    name = "toy-rms"
-    readme = "README.md"
+    authors         = [{ name = "bwrob", email = "bartosz.marcin.wroblewski@gmail.com" }]
+    dependencies    = [
+    "pandas>=3.0.1",
+    "yfinance>=1.2.0",
+]
+    description     = "Add your description here"
+    name            = "toy-rms"
+    readme          = "README.md"
     requires-python = ">=3.13"
-    version = "0.1.0"
+    version         = "0.1.0"
 
-[dependency-groups]
-    dev = [
-        "ipdb>=0.13.13",
-        "ipython>=9.10.0",
-        "poethepoet>=0.42.0",
-        "pytest>=9.0.2",
-        "ty>=0.0.19",
-        "typist>=0.0.1",
-    ]
-    docs = ["zensical>=0.0.24"]
+    [project.scripts]
+        toy-rms = "toy_rms:main"
+
+[build-system]
+    build-backend = "uv_build"
+    requires      = ["uv_build>=0.10.6,<0.11.0"]
