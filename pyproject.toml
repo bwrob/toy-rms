@@ -2,6 +2,8 @@
     authors         = [{ name = "bwrob", email = "bartosz.marcin.wroblewski@gmail.com" }]
     dependencies    = [
     "pandas>=3.0.1",
+    "pandera>=0.29.0",
+    "sqlmodel>=0.0.37",
     "yfinance>=1.2.0",
 ]
     description     = "Add your description here"

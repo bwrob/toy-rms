@@ -6,6 +6,7 @@ from typing import NamedTuple, cast
 import pandas as pd
 import yfinance as yf
 
+from toy_rms.data_storage.tables import OptionPrice, get_engine
 from toy_rms.utils.naming import to_snake_case
 
 
@@ -54,6 +55,19 @@ def prices_for_ticker(ticker: str) -> pd.DataFrame:
     return pd.concat(all_prices).rename(columns=to_snake_case).reset_index(drop=True)
 
 
+def store_prices_to_db(ticker: str) -> None:
+    """Store option prices for the given ticker symbol to the database."""
+    engine = get_engine()
+    prices = prices_for_ticker(ticker)
+    prices.to_sql(
+        name=str(OptionPrice.__tablename__),
+        con=engine,
+        if_exists="replace",
+        index=False,
+    )
+
+
 if __name__ == "__main__":
     df = prices_for_ticker("AAPL")
     df.info()
+    store_prices_to_db("AAPL")
