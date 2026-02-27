@@ -1,0 +1,28 @@
+[tasks.format]
+    cmd  = "ruff format --diff"
+    help = "Check code formatting using ruff."
+
+[tasks.lint]
+    cmd  = "ruff check --config ruff.toml"
+    help = "Check code rules using ruff."
+
+[tasks.type-check-ty]
+    cmd  = "ty check ."
+    help = "Check static typing using ty."
+
+[tasks.complexity]
+    default_item_type = "cmd"
+    help              = "Check code complexity using complexipy."
+    sequence          = ["complexipy .", "ruff check . --select=PLR0912"]
+
+[tasks.fix]
+    default_item_type = "cmd"
+    help              = "Code quality fixes using ruff."
+    ignore_fail       = "return_non_zero"
+    sequence          = ["ruff check --fix --unsafe-fixes", "ruff format"]
+
+
+[tasks.code-quality]
+    help        = "Run all code quality checks."
+    ignore_fail = "return_non_zero"
+    sequence    = ["fix", "format", "lint", "type-check-ty", "complexity"]
